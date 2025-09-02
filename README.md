@@ -1,5 +1,7 @@
 # Task 1: Bash ETL Pipeline Implementation
 
+![Pipeline Architecture](./Docs/CDE-ETL-Architecture.png)
+
 ## Project Setup
 - Created a working directory using `mkdir` to organize project files.
 - Initialized a Git repository and linked it to the remote repository.
