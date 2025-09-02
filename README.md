@@ -34,3 +34,24 @@
 - After successfully running the project on the `dev` branch, merged changes back into the `main` branch.
 - Pushed changes to `origin dev` and created a pull request.
 - Followed best practices for branching, development, and merging.
+
+# Task 2: Bash Script to Move CSV and JSON Files
+
+## Objective
+Write a Bash script to move all CSV and JSON files from a source folder to a target folder named `json_and_CSV`. The script should work with one or more CSV and JSON files.
+
+## Implementation
+
+### Project Setup
+- Identified the source folder named `Data`.
+- Created a target folder `json_and_CSV` if it did not already exist.
+
+### Script Logic
+- Iterated through all files in the source folder.
+- Checked the file extension to determine if it is `.csv` or `.json`.
+- If the file matches the criteria, copied it to the target folder.
+- Implemented logging to track all actions and confirm which files were moved successfully.
+
+### Key Features
+- Works with multiple files.
+- Automatically creates the target folder if it does not exist.
