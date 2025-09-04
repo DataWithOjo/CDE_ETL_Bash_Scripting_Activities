@@ -57,3 +57,38 @@ Write a Bash script to move all CSV and JSON files from a source folder to a tar
 ### Key Features
 - Works with multiple files.
 - Automatically creates the target folder if it does not exist.
+
+## Task 3: Load CSV Files into PostgreSQL
+
+### Project Setup
+- Stored PostgreSQL credentials in a `.env` file.
+- Loaded environment variables in the main Bash script `load_csv.sh`.
+
+### Script Development
+- Tested PostgreSQL connectivity using the provided credentials.
+- Created the database `posey` if it did not exist.
+- Created a schema named `dev` to organize tables.
+
+### Data Loading Process
+- Iterated over all CSV files in the source folder.
+- Cleaned headers using `sed` for valid PostgreSQL column names.
+- Converted all columns to `TEXT` datatype to avoid type mismatch issues.
+- Converted file paths to Windows format using `cygpath` for compatibility with `\copy`.
+- Dynamically loaded each CSV file into the `dev` schema in the `posey` database.
+- Implemented logging to track all steps.
+
+### Post-Load Data Handling
+- Ran DDL commands to alter specific column data types as needed.
+- Handled `NULL` values by updating columns to ensure data consistency.
+- Queried the cleaned tables to extract business-required insights.
+
+### Outcome
+- Successfully loaded all CSV files into PostgreSQL.
+- Cleaned, structured, and ready for analytics.
+- The pipeline is reproducible, logged, and follows best practices for ETL into relational databases.
+
+## Project Structure
+
+- `Scripts/Bash Scripts/` – contains all Bash scripts for ETL and automation.
+- `scripts/Sql Scripts/` – contains all SQL scripts used for database creation, table loading, and data manipulation.
+- `Docs/` – folder containing images of project logs and design architecture.
