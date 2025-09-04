@@ -1,5 +1,7 @@
 # Task 1: Bash ETL Pipeline Implementation
 
+![Pipeline Architecture](./Docs/CDE-ETL-Architecture.png)
+
 ## Project Setup
 - Created a working directory using `mkdir` to organize project files.
 - Initialized a Git repository and linked it to the remote repository.
@@ -34,3 +36,59 @@
 - After successfully running the project on the `dev` branch, merged changes back into the `main` branch.
 - Pushed changes to `origin dev` and created a pull request.
 - Followed best practices for branching, development, and merging.
+
+# Task 2: Bash Script to Move CSV and JSON Files
+
+## Objective
+Write a Bash script to move all CSV and JSON files from a source folder to a target folder named `json_and_CSV`. The script should work with one or more CSV and JSON files.
+
+## Implementation
+
+### Project Setup
+- Identified the source folder named `Data`.
+- Created a target folder `json_and_CSV` if it did not already exist.
+
+### Script Logic
+- Iterated through all files in the source folder.
+- Checked the file extension to determine if it is `.csv` or `.json`.
+- If the file matches the criteria, copied it to the target folder.
+- Implemented logging to track all actions and confirm which files were moved successfully.
+
+### Key Features
+- Works with multiple files.
+- Automatically creates the target folder if it does not exist.
+
+## Task 3: Load CSV Files into PostgreSQL
+
+### Project Setup
+- Stored PostgreSQL credentials in a `.env` file.
+- Loaded environment variables in the main Bash script `load_csv.sh`.
+
+### Script Development
+- Tested PostgreSQL connectivity using the provided credentials.
+- Created the database `posey` if it did not exist.
+- Created a schema named `dev` to organize tables.
+
+### Data Loading Process
+- Iterated over all CSV files in the source folder.
+- Cleaned headers using `sed` for valid PostgreSQL column names.
+- Converted all columns to `TEXT` datatype to avoid type mismatch issues.
+- Converted file paths to Windows format using `cygpath` for compatibility with `\copy`.
+- Dynamically loaded each CSV file into the `dev` schema in the `posey` database.
+- Implemented logging to track all steps.
+
+### Post-Load Data Handling
+- Ran DDL commands to alter specific column data types as needed.
+- Handled `NULL` values by updating columns to ensure data consistency.
+- Queried the cleaned tables to extract business-required insights.
+
+### Outcome
+- Successfully loaded all CSV files into PostgreSQL.
+- Cleaned, structured, and ready for analytics.
+- The pipeline is reproducible, logged, and follows best practices for ETL into relational databases.
+
+## Project Structure
+
+- `Scripts/Bash Scripts/` – contains all Bash scripts for ETL and automation.
+- `scripts/Sql Scripts/` – contains all SQL scripts used for database creation, table loading, and data manipulation.
+- `Docs/` – folder containing images of project logs and design architecture.
